@@ -11,20 +11,21 @@
 		sun: {
 			name: 'The Sun',
 			image: 'sun.svg',
-			x: $(window).width()/2,
-			y: $(window).height()/2,
+			x: 0,
+			y: 0,
 			towX: 0, // Moving towards
 			towY: 0, // Moving towards
 			distance: 0, // Distance to sun
 			size: 200,
 			timeToRotate: 1, // 1 year
-			rotatePoint: 0
+			rotatePoint: 0,
+			info: 'sun.html' // The info file
 		},
 		mercury: {
 			name: 'Mercury',
 			image: 'mercury.svg',
-			x: $(window).width()/2,
-			y: $(window).height()/2,
+			x: 0,
+			y: 0,
 			towX: 0, // Moving towards
 			towY: 0, // Moving towards
 			distance: 150, // Distance to sun
@@ -35,8 +36,8 @@
 		venus: {
 			name: 'Venus',
 			image: 'venus.svg',
-			x: $(window).width()/2,
-			y: $(window).height()/2,
+			x: 0,
+			y: 0,
 			towX: 0, // Moving towards
 			towY: 0, // Moving towards
 			distance: 250, // Distance to sun
@@ -47,8 +48,8 @@
 		earth: {
 			name: 'Earth',
 			image: 'earth.svg',
-			x: $(window).width()/2,
-			y: $(window).height()/2,
+			x: 0,
+			y: 0,
 			towX: 0, // Moving towards
 			towY: 0, // Moving towards
 			distance: 380, // Distance to sun
@@ -59,8 +60,8 @@
 		mars: {
 			name: 'Mars',
 			image: 'mars.svg',
-			x: $(window).width()/2,
-			y: $(window).height()/2,
+			x: 0,
+			y: 0,
 			towX: 0, // Moving towards
 			towY: 0, // Moving towards
 			distance: 480, // Distance to sun
@@ -71,8 +72,8 @@
 		jupiter: {
 			name: 'Jupiter',
 			image: 'jupiter.svg',
-			x: $(window).width()/2,
-			y: $(window).height()/2,
+			x: 0,
+			y: 0,
 			towX: 0, // Moving towards
 			towY: 0, // Moving towards
 			distance: 670,
@@ -83,8 +84,8 @@
 		saturn: {
 			name: 'Saturn',
 			image: 'saturn.svg',
-			x: $(window).width()/2,
-			y: $(window).height()/2,
+			x: 0,
+			y: 0,
 			towX: 0, // Moving towards
 			towY: 0, // Moving towards
 			distance: 960,
@@ -95,8 +96,8 @@
 		uranus: {
 			name: 'Uranus',
 			image: 'uranus.svg',
-			x: $(window).width()/2,
-			y: $(window).height()/2,
+			x: 0,
+			y: 0,
 			towX: 0, // Moving towards
 			towY: 0, // Moving towards
 			distance: 1150,
@@ -107,8 +108,8 @@
 		neptune: {
 			name: 'Neptune',
 			image: 'neptune.svg',
-			x: $(window).width()/2,
-			y: $(window).height()/2,
+			x: 0,
+			y: 0,
 			towX: 0, // Moving towards
 			towY: 0, // Moving towards
 			distance: 1300,
@@ -117,30 +118,6 @@
 			rotatePoint: 0
 		}
 	};
-
-	// Trigger closest planet that is clicked instead of only exact clicks
-	$('body').click(function (e){
-		if (!$(e.target).hasClass('sprite')){
-			var x = e.pageX,
-					y = e.pageY,
-					lastDist = 1000000,
-					closest;
-
-			$('.planet').each(function (){
-				var centerX = $(this).position().left - ($(this).width()/2);
-				var centerY = $(this).position().top - ($(this).height()/2);
-				var xx = x - centerX,
-						yy = y - centerY,
-						dist = hyp(xx, yy);
-				if (dist < lastDist){
-					closest = $(this);
-					lastDist = dist;
-				}
-			});
-
-			closest.trigger('click');
-		}
-	});
 
 	// Ready
 	$(document).ready(function (){
@@ -197,8 +174,6 @@
 						.removeClass('inactive')
 						.addClass('active');
 
-					$('.info-box').addClass('active');
-
 					// Set new sprite size
 					sprite.css({
 						height: $(window).height()*0.8,
@@ -220,6 +195,11 @@
 							height: '100%'
 						});
 					});
+
+					// Set info
+					$('.info-box')
+						.addClass('active')
+						.load('info/' + p.info);
 
 				}
 
@@ -250,6 +230,30 @@
 				yPos = 0;
 			}
 		}
+
+		// Trigger closest planet that is clicked instead of only exact clicks
+		$('body').click(function (e){
+			if (!$(e.target).hasClass('sprite')){
+				var x = e.pageX,
+						y = e.pageY,
+						lastDist = 1000000,
+						closest;
+
+				$('.planet').each(function (){
+					var centerX = $(this).position().left - ($(this).width()/2);
+					var centerY = $(this).position().top - ($(this).height()/2);
+					var xx = x - centerX,
+							yy = y - centerY,
+							dist = hyp(xx, yy);
+					if (dist < lastDist){
+						closest = $(this);
+						lastDist = dist;
+					}
+				});
+
+				closest.trigger('click');
+			}
+		});
 
 		// Move planets each frame
 		setInterval(function (){
