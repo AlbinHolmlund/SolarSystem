@@ -10,7 +10,7 @@ var planets = {
 		distance: 0, // Distance to sun
 		size: 200,
 		timeToRotate: 1, // 1 year
-		rotatePoint: 0,
+		rotatePoint: 1,
 		info: 'sun.html', // The info file
 		clr: '#000'
 	},
@@ -23,8 +23,8 @@ var planets = {
 		towY: 0, // Moving towards
 		distance: 150, // Distance to sun
 		size: 50,
-		timeToRotate: 1, //88 / 365, // 88 earth days 88 / 365
-		rotatePoint: 0,
+		timeToRotate: 88 / 365, // 88 earth days 88 / 365
+		rotatePoint: 1.5,
 		info: 'mercury.html', // The info file
 		clr: '#000'
 	},
@@ -37,8 +37,8 @@ var planets = {
 		towY: 0, // Moving towards
 		distance: 250, // Distance to sun
 		size: 100,
-		timeToRotate: 1, //224.7 / 365,
-		rotatePoint: 0 
+		timeToRotate: 224.7 / 365,
+		rotatePoint: 2
 	},
 	earth: {
 		name: 'Earth',
@@ -49,8 +49,8 @@ var planets = {
 		towY: 0, // Moving towards
 		distance: 380, // Distance to sun
 		size: 80,
-		timeToRotate: 1, //1, // 1 year
-		rotatePoint: 0,
+		timeToRotate: 1, // 1 year
+		rotatePoint: 2.5,
 		info: 'earth.html', // The info file
 		clr: '#000'
 	},
@@ -63,8 +63,8 @@ var planets = {
 		towY: 0, // Moving towards
 		distance: 480, // Distance to sun
 		size: 40,
-		timeToRotate: 1, //1.8809, // 1 year
-		rotatePoint: 0
+		timeToRotate: 1.8809, // 1 year
+		rotatePoint: 3
 	},
 	jupiter: {
 		name: 'Jupiter',
@@ -75,8 +75,8 @@ var planets = {
 		towY: 0, // Moving towards
 		distance: 670,
 		size: 250,
-		timeToRotate: 1, //11.86, // 2 years
-		rotatePoint: 0
+		timeToRotate: 11.86 * 0.1, // 2 years
+		rotatePoint: 3.5
 	},
 	saturn: {
 		name: 'Saturn',
@@ -87,8 +87,8 @@ var planets = {
 		towY: 0, // Moving towards
 		distance: 960,
 		size: 290,
-		timeToRotate: 1, //29.5, // 2 years
-		rotatePoint: 0,
+		timeToRotate: 29.5 * 0.1, // 2 years
+		rotatePoint: 4,
 		info: 'saturn.html', // The info file
 		clr: '#000'
 	},
@@ -101,8 +101,8 @@ var planets = {
 		towY: 0, // Moving towards
 		distance: 1150,
 		size: 80,
-		timeToRotate: 1, //29.5, // 2 years
-		rotatePoint: 0
+		timeToRotate: 84 * 0.05, //29.5, // 2 years
+		rotatePoint: 4.5
 	},
 	neptune: {
 		name: 'Neptune',
@@ -113,7 +113,7 @@ var planets = {
 		towY: 0, // Moving towards
 		distance: 1300,
 		size: 70,
-		timeToRotate: 1, //29.5, // 2 years
-		rotatePoint: 0
+		timeToRotate: 164.79 * 0.05, //29.5, // 2 years
+		rotatePoint: 5
 	}
 };
