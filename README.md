@@ -5,4 +5,4 @@ The idea is to simply have all the elements move towards a point instead of anim
 
 With this method you can change the point that the elements are moving towards and by doing so create smooth stateless animations.
 
-This also removes the risk of an element flickering between two states in an animation when you change the animate before the other one is finished.
+This also removes the risk of an element flickering between two states of an animation if you change the animation before the other one is finished.
