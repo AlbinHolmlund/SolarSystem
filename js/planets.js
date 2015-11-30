@@ -24,7 +24,9 @@ var planets = {
 		distance: 150, // Distance to sun
 		size: 50,
 		timeToRotate: 1, //88 / 365, // 88 earth days 88 / 365
-		rotatePoint: 0
+		rotatePoint: 0,
+		info: 'mercury.html', // The info file
+		clr: '#000'
 	},
 	venus: {
 		name: 'Venus',
