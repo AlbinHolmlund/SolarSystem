@@ -19,7 +19,8 @@
 			size: 200,
 			timeToRotate: 1, // 1 year
 			rotatePoint: 0,
-			info: 'sun.html' // The info file
+			info: 'sun.html', // The info file
+			clr: '#000'
 		},
 		mercury: {
 			name: 'Mercury',
@@ -31,7 +32,7 @@
 			distance: 150, // Distance to sun
 			size: 50,
 			timeToRotate: 1, //88 / 365, // 88 earth days 88 / 365
-			rotatePoint: 0 
+			rotatePoint: 0
 		},
 		venus: {
 			name: 'Venus',
@@ -55,7 +56,9 @@
 			distance: 380, // Distance to sun
 			size: 80,
 			timeToRotate: 1, //1, // 1 year
-			rotatePoint: 0
+			rotatePoint: 0,
+			info: 'earth.html', // The info file
+			clr: '#000'
 		},
 		mars: {
 			name: 'Mars',
@@ -199,7 +202,18 @@
 					// Set info
 					$('.info-box')
 						.addClass('active')
-						.load('info/' + p.info);
+						.load('info/' + p.info, function (){
+
+						$('.info-box h2').css({
+							color: p.clr
+						});
+
+						$('.info-box h2 .back').css({
+							backgroundImage: "url(img/" + p.image + ")",
+							//backgroundColor: p.backClr
+						});
+
+					});
 
 				}
 

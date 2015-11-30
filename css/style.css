@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,700,600,300);
 * {
   box-sizing: border-box; }
 
@@ -11,15 +12,35 @@ html, body {
   padding: 0;
   overflow: hidden; }
 
-body:after {
-  content: '';
-  width: 6px;
-  height: 6px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: 197px;
-  margin-top: 197px; }
+body {
+  font-family: "Source Code Pro";
+  font-weight: 300; }
+
+a {
+  position: relative;
+  padding-bottom: 5px; }
+  a:before, a:after {
+    content: '';
+    position: absolute;
+    border-bottom: 1px solid #fff;
+    transition: all 0.3s; }
+  a:before {
+    left: 50%;
+    right: 50%;
+    top: 0; }
+  a:after {
+    left: 0;
+    right: 0;
+    bottom: 0; }
+  a, a:active, a:hover, a:link {
+    text-decoration: none;
+    color: #fff; }
+  a:hover:before {
+    left: 0;
+    right: 0; }
+  a:hover:after {
+    left: 50%;
+    right: 50%; }
 
 .planet {
   position: absolute;
@@ -40,7 +61,7 @@ body:after {
     background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;
-    transition: all 0.1s; }
+    transition: all 0.3s; }
   .planet:hover {
     transform: scale(1); }
   .planet.closest {
@@ -57,20 +78,35 @@ body:after {
   right: 50%;
   color: #fff;
   padding: 40px;
-  font-family: Source Code Pro;
-  font-weight: 100;
   z-index: 10000;
   opacity: 0;
-  transform: translateX(-100%);
-  transition: all 2s; }
+  transform: translateY(100%);
+  transition: all 0.7s; }
+  .info-box h2 {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 20px 0;
+    padding: 10px 40px;
+    font-weight: 400;
+    font-size: 4em;
+    border-radius: 10px;
+    overflow: hidden; }
+    .info-box h2 .back {
+      position: absolute;
+      top: 0;
+      left: -20%;
+      right: -20%;
+      bottom: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: -1; }
+  .info-box p {
+    margin-bottom: 0 0 20px 0;
+    padding: 0 40px; }
   .info-box.active {
     opacity: 1;
-    transform: translateX(0); }
-  .info-box h2 {
-    margin: 0 0 20px 0;
-    font-weight: 100; }
-  .info-box p {
-    margin-bottom: 0 0 20px 0; }
+    transform: translateY(0); }
 
 #starsky {
   position: fixed;
