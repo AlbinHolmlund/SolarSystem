@@ -42,6 +42,16 @@ a {
     left: 50%;
     right: 50%; }
 
+h1 {
+  position: absolute;
+  margin: 0;
+  top: 40px;
+  right: 40px;
+  font-size: 2em;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: #fff; }
+
 .planet {
   position: absolute;
   border-radius: 50%;
