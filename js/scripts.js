@@ -16,7 +16,7 @@
 			var planet = $('<div/>');
 			
 			// Set planet CSS
-			planet.addClass('planet');
+			planet.addClass('planet ' + key);
 			planet.css({
 				width: p.size,
 				height: p.size

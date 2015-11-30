@@ -136,6 +136,10 @@ $boxSpace: 20px;
       background-repeat: no-repeat;
       background-position: center;
       z-index: -1;
+      &.saturn{
+        left: -60%;
+        right: -60%;
+      }
     }
   }
   p{

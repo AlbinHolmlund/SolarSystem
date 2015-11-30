@@ -88,7 +88,9 @@ var planets = {
 		distance: 960,
 		size: 290,
 		timeToRotate: 1, //29.5, // 2 years
-		rotatePoint: 0
+		rotatePoint: 0,
+		info: 'saturn.html', // The info file
+		clr: '#000'
 	},
 	uranus: {
 		name: 'Uranus',
