@@ -114,7 +114,7 @@ $boxSpace: 20px;
   //background: rgba(#000, 0.8);
   z-index: 10000;
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateY(-100%);
   transition: all 0.7s;
   // Childs
   h2{

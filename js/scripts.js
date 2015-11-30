@@ -14,6 +14,9 @@
 		$.each(planets, function (key, p){
 			// Planet
 			var planet = $('<div/>');
+
+			// Set default
+			p.timeToRotateDefault = p.timeToRotate;
 			
 			// Set planet CSS
 			planet.addClass('planet ' + key);
@@ -133,8 +136,10 @@
 
 		// Trigger closest planet that is clicked instead of only exact clicks
 		$('body').click(function (e){
+			console.log($(e.target).attr('class'));
 			if (!$(e.target).hasClass('sprite') && // Did not click on planet
-				!$('.info-box').has(e.target).length){ // Did not click on info box
+				!$('.info-box').has(e.target).length && // Did not click on info box
+				!$(e.target).hasClass('button')){
 				var x = e.pageX,
 					y = e.pageY,
 					lastDist = 1000000,
@@ -232,6 +237,22 @@
 		});
 
 	});
+
+	// Options
+	$('.line-up').click(function (){
+		$.each(planets, function (key, val){
+			var p = planets[key];
+			p.timeToRotate = 1;
+			p.rotatePoint = 0;
+		});
+	});
+	$('.reset-planets').click(function (){
+		$.each(planets, function (key, val){
+			var p = planets[key];
+			p.timeToRotate = p.timeToRotateDefault;
+		});
+	});
+
 })($);
 
 //http://www.mygraphichunt.com/free-vector-flat-planet-vectors-10713/
