@@ -1,4 +1,8 @@
-
+/*
+	TODO:
+	Add next - prev buttons
+	Add info text.
+*/
 
 // Draw planets
 (function (){
@@ -25,7 +29,7 @@
 			towY: 0, // Moving towards
 			distance: 150, // Distance to sun
 			size: 50,
-			timeToRotate: 1, // 1 year
+			timeToRotate: 1, //88 / 365, // 88 earth days 88 / 365
 			rotatePoint: 0 
 		},
 		venus: {
@@ -37,7 +41,7 @@
 			towY: 0, // Moving towards
 			distance: 250, // Distance to sun
 			size: 100,
-			timeToRotate: 1, // 1 year
+			timeToRotate: 1, //224.7 / 365,
 			rotatePoint: 0 
 		},
 		earth: {
@@ -49,7 +53,7 @@
 			towY: 0, // Moving towards
 			distance: 380, // Distance to sun
 			size: 80,
-			timeToRotate: 1, // 1 year
+			timeToRotate: 1, //1, // 1 year
 			rotatePoint: 0
 		},
 		mars: {
@@ -61,7 +65,7 @@
 			towY: 0, // Moving towards
 			distance: 480, // Distance to sun
 			size: 40,
-			timeToRotate: 1, // 1 year
+			timeToRotate: 1, //1.8809, // 1 year
 			rotatePoint: 0
 		},
 		jupiter: {
@@ -73,7 +77,7 @@
 			towY: 0, // Moving towards
 			distance: 670,
 			size: 250,
-			timeToRotate: 1, // 2 years
+			timeToRotate: 1, //11.86, // 2 years
 			rotatePoint: 0
 		},
 		saturn: {
@@ -85,11 +89,60 @@
 			towY: 0, // Moving towards
 			distance: 960,
 			size: 290,
-			timeToRotate: 1, // 2 years
+			timeToRotate: 1, //29.5, // 2 years
+			rotatePoint: 0
+		},
+		uranus: {
+			name: 'Uranus',
+			image: 'uranus.svg',
+			x: $(window).width()/2,
+			y: $(window).height()/2,
+			towX: 0, // Moving towards
+			towY: 0, // Moving towards
+			distance: 1150,
+			size: 80,
+			timeToRotate: 1, //29.5, // 2 years
+			rotatePoint: 0
+		},
+		neptune: {
+			name: 'Neptune',
+			image: 'neptune.svg',
+			x: $(window).width()/2,
+			y: $(window).height()/2,
+			towX: 0, // Moving towards
+			towY: 0, // Moving towards
+			distance: 1300,
+			size: 70,
+			timeToRotate: 1, //29.5, // 2 years
 			rotatePoint: 0
 		}
 	};
-	
+
+	// Trigger closest planet that is clicked instead of only exact clicks
+	$('body').click(function (e){
+		if (!$(e.target).hasClass('sprite')){
+			var x = e.pageX,
+					y = e.pageY,
+					lastDist = 1000000,
+					closest;
+
+			$('.planet').each(function (){
+				var centerX = $(this).position().left - ($(this).width()/2);
+				var centerY = $(this).position().top - ($(this).height()/2);
+				var xx = x - centerX,
+						yy = y - centerY,
+						dist = hyp(xx, yy);
+				if (dist < lastDist){
+					closest = $(this);
+					lastDist = dist;
+				}
+			});
+
+			closest.trigger('click');
+		}
+	});
+
+	// Ready
 	$(document).ready(function (){
 		// Draw planets
 		$.each(planets, function (key, p){
@@ -128,7 +181,7 @@
 					// Was active
 					$(this).removeClass('active');
 					$('.planet').not(this).removeClass('inactive');
-					
+
 					$('.info-box').removeClass('active');
 
 					// Reset to default sprite size

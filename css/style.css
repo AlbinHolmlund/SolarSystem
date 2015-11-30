@@ -43,6 +43,8 @@ body:after {
     transition: all 0.1s; }
   .planet:hover {
     transform: scale(1); }
+  .planet.closest {
+    transform: scale(1.5); }
   .planet.inactive {
     opacity: 0.5; }
   .planet.active {
@@ -53,10 +55,8 @@ body:after {
   top: 20px;
   left: 20px;
   right: 50%;
-  bottom: 20px;
   color: #fff;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.8);
   font-family: Source Code Pro;
   font-weight: 100;
   z-index: 10000;
