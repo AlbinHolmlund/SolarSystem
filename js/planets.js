@@ -125,7 +125,7 @@ var planets = {
 		towY: 0, // Moving towards
 		distance: 1450,
 		size: 30,
-		timeToRotate: 164.79 * 0.1, //29.5, // 2 years
+		timeToRotate: 248 * 0.5, //29.5, // 2 years
 		rotatePoint: 5
 	}
 };
