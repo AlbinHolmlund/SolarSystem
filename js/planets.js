@@ -115,5 +115,17 @@ var planets = {
 		size: 70,
 		timeToRotate: 164.79 * 0.05, //29.5, // 2 years
 		rotatePoint: 5
+	},
+	pluto: {
+		name: 'Pluto',
+		image: 'pluto.svg',
+		x: 0,
+		y: 0,
+		towX: 0, // Moving towards
+		towY: 0, // Moving towards
+		distance: 1450,
+		size: 30,
+		timeToRotate: 164.79 * 0.1, //29.5, // 2 years
+		rotatePoint: 5
 	}
 };
