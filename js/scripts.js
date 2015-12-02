@@ -17,6 +17,8 @@
 
 			// Set default
 			p.timeToRotateDefault = p.timeToRotate;
+			p.sizeDefault = p.size;
+			p.distanceDefault = p.distance;
 			
 			// Set planet CSS
 			planet.addClass('planet ' + key);
@@ -201,39 +203,46 @@
 			});
 		}, 1000/60);
 
+		function zoomIn (){
+			posMultip *= 1 + (1 - 0.95);
+
+			$.each(planets, function (key, val){
+				var p = planets[key]; // The planet
+				p.size *= 1 + (1 - 0.95);
+				p.distance *= 1 + (1 - 0.95);
+
+				p.el.css({
+					width: p.size,
+					height: p.size,
+				});
+
+				p.el.find('.sprite').attr('data-size', p.size);
+			});
+		}
+		function zoomOut (){
+			posMultip *= 0.95;
+
+			$.each(planets, function (key, val){
+				var p = planets[key]; // The planet
+
+				p.size *= 0.95;
+				p.distance *= 0.95;
+
+				p.el.css({
+					width: p.size,
+					height: p.size,
+				});
+
+				p.el.find('.sprite').attr('data-size', p.size);
+			});
+		}
+
 		$(window).bind('mousewheel', function(event) {
-				if (event.originalEvent.wheelDelta >= 0) { 
-					posMultip *= 1 + (1 - 0.95);
-
-					$.each(planets, function (key, val){
-						var p = planets[key]; // The planet
-						p.size *= 1 + (1 - 0.95);
-						p.distance *= 1 + (1 - 0.95);
-
-						p.el.css({
-							width: p.size,
-							height: p.size,
-						});
-
-						p.el.find('.sprite').attr('data-size', p.size);
-					});
-				} else {
-					posMultip *= 0.95;
-
-					$.each(planets, function (key, val){
-						var p = planets[key]; // The planet
-
-						p.size *= 0.95;
-						p.distance *= 0.95;
-
-						p.el.css({
-							width: p.size,
-							height: p.size,
-						});
-
-						p.el.find('.sprite').attr('data-size', p.size);
-					});
-				}
+			if (event.originalEvent.wheelDelta >= 0) { 
+				zoomIn();
+			} else {
+				zoomOut();
+			}
 		});
 
 	});
@@ -252,6 +261,39 @@
 			p.timeToRotate = p.timeToRotateDefault;
 		});
 	});
+
+
+	$('body').on('touchstart', function (e){
+		e.preventDefault();
+	});
+	document.querySelector('body').addEventListener('gesturechange', function(e) {
+		$.each(planets, function (key, val){
+			var p = planets[key]; // The planet
+			p.size = p.sizeDefault * e.scale;
+			p.distance = p.distanceDefault * e.scale;
+
+			p.el.css({
+				width: p.size,
+				height: p.size,
+			});
+
+			p.el.find('.sprite').attr('data-size', p.size);
+		});
+	}, false);
+	document.querySelector('body').addEventListener('gestureend', function(e) {
+		$.each(planets, function (key, val){
+			var p = planets[key]; // The planet
+			p.sizeDefault = p.size;;
+			p.distanceDefault = p.distance;
+
+			p.el.css({
+				width: p.size,
+				height: p.size,
+			});
+
+			p.el.find('.sprite').attr('data-size', p.size);
+		});
+	}, false);
 
 })($);
 
