@@ -1,3 +1,5 @@
+
+/** Get a position variable based on mouse position to add to planets x and y values **/
 (function (){
 	// Using movey to get mouse position and make the planets movement more dynamic
 	var dummyObject = new Movey($('<div/>'));

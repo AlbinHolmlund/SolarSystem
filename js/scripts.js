@@ -18,6 +18,9 @@ Planets.settings = {
 	posMultip: 1 // 
 };
 
+/** Maths helpers **/
+// @codekit-append "maths.js"
+
 /** Planets array **/
 // @codekit-append "planets.js";
 

@@ -1,3 +1,5 @@
+
+/** Zoom in on the planets, ( changes size and distance of planets to simulate zooming :) ) **/
 (function (){
 	function zoomIn (){
 		Planets.settings.posMultip *= 1 + (1 - 0.95);

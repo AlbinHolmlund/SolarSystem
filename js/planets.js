@@ -1,4 +1,5 @@
 
+/** Planets array **/
 var planets = {
 	sun: {
 		name: 'The Sun',

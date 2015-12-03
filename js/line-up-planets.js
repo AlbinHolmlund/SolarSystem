@@ -1,3 +1,5 @@
+
+/** Button event to line up planets and button to return them to original orbits **/
 (function (){
 
 	// Options
@@ -14,5 +16,5 @@
 			p.timeToRotate = p.timeToRotateDefault;
 		});
 	});
-	
+
 })($);

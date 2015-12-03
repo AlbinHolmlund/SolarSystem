@@ -18,6 +18,9 @@ Planets.settings = {
 	posMultip: 1 // 
 };
 
+/** Maths helpers **/
+// @codekit-append "maths.js"
+
 /** Planets array **/
 // @codekit-append "planets.js";
 
@@ -47,6 +50,33 @@ Planets.settings = {
 
 
 
+/*** Helpers ***/
+var sqrt = Math.sqrt,
+    square = function (val){
+    return Math.pow(val, 2);
+},
+    hyp = function (xx, yy){
+    return sqrt( square(xx) + square(yy) ); 
+};
+// Limit a number to a max value
+Number.prototype.max = function(maximum) {
+    if (this.valueOf() > maximum){
+      return maximum;
+    } else {
+      return this.valueOf();
+    }
+};
+// Limit a number to a minimum value
+Number.prototype.min = function(minimum) {
+    if (this.valueOf() < minimum){
+      return minimum;
+    } else {
+      return this.valueOf();
+    }
+};
+
+
+/** Planets array **/
 var planets = {
 	sun: {
 		name: 'The Sun',
@@ -192,8 +222,10 @@ var planets = {
 	}
 };
 
+
+/** Create planets **/
 (function (){
-	
+
 	// Draw planets
 	$.each(planets, function (key, p){
 		// Planet
@@ -303,6 +335,8 @@ var planets = {
 
 })($);
 
+
+/** Move planets each frame (60fps) **/
 (function (){
 	// Move planets each frame
 	setInterval(function (){
@@ -345,6 +379,8 @@ var planets = {
 	}, 1000/60);
 })($);
 
+
+/** Zoom in on the planets, ( changes size and distance of planets to simulate zooming :) ) **/
 (function (){
 	function zoomIn (){
 		Planets.settings.posMultip *= 1 + (1 - 0.95);
@@ -389,6 +425,8 @@ var planets = {
 	});
 })($);
 
+
+/** Get a position variable based on mouse position to add to planets x and y values **/
 (function (){
 	// Using movey to get mouse position and make the planets movement more dynamic
 	var dummyObject = new Movey($('<div/>'));
@@ -407,6 +445,8 @@ var planets = {
 	}
 })($);
 
+
+/** Clicking will cause the mouse to trigger the planet with the shortest distance to mouse click x/y **/
 (function (){
 	// Trigger closest planet that is clicked instead of only exact clicks
 	$('body').click(function (e){
@@ -436,6 +476,8 @@ var planets = {
 
 })($);
 
+
+/** Button event to line up planets and button to return them to original orbits **/
 (function (){
 
 	// Options
@@ -452,9 +494,11 @@ var planets = {
 			p.timeToRotate = p.timeToRotateDefault;
 		});
 	});
-	
+
 })($);
 
+
+/** Mobile fixes, events and such to make it work (kind of) on mobile **/
 (function (){
 	// Mobile fix
 	$(document).ready(function (){

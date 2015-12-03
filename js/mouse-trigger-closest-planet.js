@@ -1,3 +1,5 @@
+
+/** Clicking will cause the mouse to trigger the planet with the shortest distance to mouse click x/y **/
 (function (){
 	// Trigger closest planet that is clicked instead of only exact clicks
 	$('body').click(function (e){

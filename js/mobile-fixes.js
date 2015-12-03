@@ -1,3 +1,5 @@
+
+/** Mobile fixes, events and such to make it work (kind of) on mobile **/
 (function (){
 	// Mobile fix
 	$(document).ready(function (){

@@ -1,5 +1,7 @@
+
+/** Create planets **/
 (function (){
-	
+
 	// Draw planets
 	$.each(planets, function (key, p){
 		// Planet

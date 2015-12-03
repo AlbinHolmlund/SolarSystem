@@ -1,3 +1,5 @@
+
+/** Move planets each frame (60fps) **/
 (function (){
 	// Move planets each frame
 	setInterval(function (){

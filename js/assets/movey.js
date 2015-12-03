@@ -1,45 +1,3 @@
-/*
-  MoveyJS
-  TODO:
-    Make Movey.variable into settings.variable instead, to make user be able to edit them when initing.
-*/
-
-
-/*** Helpers (Not obligatory for movey) ***/
-var sqrt = Math.sqrt,
-    square = function (val){
-    return Math.pow(val, 2);
-},
-    hyp = function (xx, yy){
-    return sqrt( square(xx) + square(yy) ); 
-};
-// Limit a number to a max value
-Number.prototype.max = function(maximum) {
-    if (this.valueOf() > maximum){
-      return maximum;
-    } else {
-      return this.valueOf();
-    }
-};
-// Limit a number to a minimum value
-Number.prototype.min = function(minimum) {
-    if (this.valueOf() < minimum){
-      return minimum;
-    } else {
-      return this.valueOf();
-    }
-};
-
-/*** TEST (Not obligatory for Movey) 
-          (Movey is under this function) ***/
-
-/* 
-  Visualizes mouse position and how the animation works.
-  
-  - Red is mouse position, that moves even if the mouse is completely still.
-  
-  - Green is the current position that the objects will use to position themselves.
-*/
 
 function testMovey(){
   // Append mouse-position and current-values as an element
@@ -98,8 +56,6 @@ function testMovey(){
   }, 16); 
 }
 
-
-/*** Movey (Actual Movey) ***/
 
 // Movey class
 function Movey(el){
@@ -176,72 +132,6 @@ Movey.init = function (customSettings){
 
       Movey.rotateCounter = 0;
   });
-
-  // Mobile tilt option
-  if (settings.tilt){
-    Movey.startDegree = null;
-    $(document).ready(function (){
-    	function tilt(degrees){
-    	    // Start degrees
-    	    if (Movey.startDegree === null || 
-    	    	Movey.startDegree[0] === 0 || 
-    	    	Movey.startDegree[1] === 0){
-    	        Movey.startDegree = [];
-    	        Movey.startDegree[0] = degrees[0];
-    	        Movey.startDegree[1] = degrees[1];
-    	    }
-
-    	    // Set x and y position depending on tilt difference from starting degrees
-    	    var yy, xx;
-    	    if (Movey.orientation == 0){
-    	        // Portrait
-    	        yy = degrees[0] - Movey.startDegree[0];
-    	        xx = degrees[1] - Movey.startDegree[1];
-    	    } else {
-    	        // Landscape
-    	        yy = degrees[1] - Movey.startDegree[1];
-    	        xx = degrees[0] - Movey.startDegree[0];
-    	    }
-
-    	    // Set mouse position based on tilt instead of actual mouse position
-    	    Movey.mouseX = ($(window).width()/2) + (xx * 10);
-    	    Movey.mouseY = ($(window).height()/2) + (yy * 20);
-    	}
-
-    	// Swap tilt degrees in landscape mode
-    	Movey.orientation = window.orientation;
-    	$(window).on("orientationchange", function(event){
-    	    var orientation = window.orientation;
-    	    Movey.orientation = orientation;
-    	    if (orientation == 0){
-    	        // Portrait
-    	        Movey.startDegree[0] = degrees[0];
-    	        Movey.startDegree[1] = degrees[1];
-    	    } else {
-    	        // Landscape
-    	        Movey.startDegree[0] = degrees[1];
-    	        Movey.startDegree[1] = degrees[0];
-    	    }
-    	});
-
-    	// Apply tilt function to the correct deviceorientation event
-    	$(function (){
-    	    if (window.DeviceOrientationEvent) {
-    	        window.addEventListener("deviceorientation", function () {
-    	            tilt([event.beta, event.gamma]);
-    	        }, true);
-    	    } else if (window.DeviceMotionEvent) {
-    	        window.addEventListener('devicemotion', function () {
-    	            tilt([event.acceleration.x * 2, event.acceleration.y * 2]);
-    	        }, true);
-    	    } else {
-    	        window.addEventListener("MozOrientation", function () {
-    	            tilt([orientation.x * 50, orientation.y * 50]);
-    	        }, true);
-    	    }
-    	});
-    });
-  }
 
   // Run all Movey objects callbacks every 16ms (60fps)
   setInterval(function (){
