@@ -263,7 +263,16 @@
 	});
 
 
-	$('body').on('touchstart', function (e){
+
+
+	// Mobile fix
+	$(document).ready(function (){
+		$('html, body').css({
+			width: $(window).width(),
+			height: $(window).height()
+		});
+	});
+	$('body').on('touchmove', function (e){
 		e.preventDefault();
 	});
 	document.querySelector('body').addEventListener('gesturechange', function(e) {

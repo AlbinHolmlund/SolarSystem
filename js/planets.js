@@ -38,7 +38,9 @@ var planets = {
 		distance: 250, // Distance to sun
 		size: 100,
 		timeToRotate: 224.7 / 365,
-		rotatePoint: 2
+		rotatePoint: 2,
+		info: 'venus.html', // The info file
+		clr: '#000'
 	},
 	earth: {
 		name: 'Earth',
@@ -64,7 +66,9 @@ var planets = {
 		distance: 480, // Distance to sun
 		size: 40,
 		timeToRotate: 1.8809, // 1 year
-		rotatePoint: 3
+		rotatePoint: 3,
+		info: 'mars.html', // The info file
+		clr: '#000'
 	},
 	jupiter: {
 		name: 'Jupiter',
@@ -76,7 +80,9 @@ var planets = {
 		distance: 670,
 		size: 250,
 		timeToRotate: 11.86 * 0.1, // 2 years
-		rotatePoint: 3.5
+		rotatePoint: 3.5,
+		info: 'jupiter.html', // The info file
+		clr: '#000'
 	},
 	saturn: {
 		name: 'Saturn',
@@ -90,6 +96,8 @@ var planets = {
 		timeToRotate: 29.5 * 0.1, // 2 years
 		rotatePoint: 4,
 		info: 'saturn.html', // The info file
+		clr: '#000',
+		info: 'saturn.html', // The info file
 		clr: '#000'
 	},
 	uranus: {
@@ -102,7 +110,9 @@ var planets = {
 		distance: 1150,
 		size: 80,
 		timeToRotate: 84 * 0.05, //29.5, // 2 years
-		rotatePoint: 4.5
+		rotatePoint: 4.5,
+		info: 'uranus.html', // The info file
+		clr: '#000'
 	},
 	neptune: {
 		name: 'Neptune',
@@ -114,7 +124,9 @@ var planets = {
 		distance: 1300,
 		size: 70,
 		timeToRotate: 164.79 * 0.05, //29.5, // 2 years
-		rotatePoint: 5
+		rotatePoint: 5,
+		info: 'neptune.html', // The info file
+		clr: '#000'
 	},
 	pluto: {
 		name: 'Pluto',
@@ -126,6 +138,8 @@ var planets = {
 		distance: 1450,
 		size: 30,
 		timeToRotate: 248 * 0.5, //29.5, // 2 years
-		rotatePoint: 5
+		rotatePoint: 5,
+		info: 'pluto.html', // The info file
+		clr: '#000'
 	}
 };
