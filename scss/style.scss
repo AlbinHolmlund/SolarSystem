@@ -243,19 +243,9 @@ $boxSpace: 20px;
   font-size: 2em;
   pointer-events: none; // Let click through
   z-index: 10001;
-  .not-clicked{
-    display: block;
-  }
-  .clicked{
-    display: none;
-  }
+  transition: transform 1s;
   &.clicked{
-    .not-clicked{
-      display: none;
-    }
-    .clicked{
-      display: block;
-    }
+    transform: rotate(45deg);
   }
 }
 

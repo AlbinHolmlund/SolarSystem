@@ -192,15 +192,10 @@ h1 {
   color: #fff;
   font-size: 2em;
   pointer-events: none;
-  z-index: 10001; }
-  .close .not-clicked {
-    display: block; }
-  .close .clicked {
-    display: none; }
-  .close.clicked .not-clicked {
-    display: none; }
-  .close.clicked .clicked {
-    display: block; }
+  z-index: 10001;
+  transition: transform 1s; }
+  .close.clicked {
+    transform: rotate(45deg); }
 
 .button-arrow {
   position: absolute;
