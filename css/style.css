@@ -143,15 +143,17 @@ h1 {
   position: absolute;
   color: #fff;
   top: 100px;
-  right: 40px;
   left: 40px;
+  right: 40px;
+  padding: 20px 40px;
   z-index: 10000;
   cursor: pointer;
   transition: 1000ms all; }
   .guide li {
     margin-bottom: 20px; }
   .guide.hide {
-    transform: translateX(100%); }
+    transform: translateX(100%);
+    margin-right: 40px; }
   @media (min-width: 850px) {
     .guide {
       left: auto;

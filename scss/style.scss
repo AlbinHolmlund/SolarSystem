@@ -179,8 +179,11 @@ $boxSpace: 20px;
   position: absolute;
   color: #fff;
   top: 100px;
-  right: 40px;
   left: 40px;
+  right: 40px;
+
+  padding: 20px 40px;
+
   z-index: 10000;
   cursor: pointer;
   transition: 1000ms all;
@@ -190,6 +193,7 @@ $boxSpace: 20px;
   // States
   &.hide{
     transform: translateX(100%);
+    margin-right: 40px;
   }
   // Media
   @media (min-width: $bp){

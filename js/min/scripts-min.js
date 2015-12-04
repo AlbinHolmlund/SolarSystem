@@ -584,8 +584,8 @@ var planets = {
 			// Position callback to give element new position
 			position.callback = function (){
 				if (!$this.hasClass('hovering')){
-					position.values.x.to = $target.offset().left - $this.width();
-					position.values.y.to = $target.offset().top - $this.width();
+					position.values.x.to = $target.offset().left;
+					position.values.y.to = $target.offset().top;
 				}
 
 				var x = position.values.x.current,
@@ -619,9 +619,6 @@ var planets = {
 				if ($this.hasClass('hovering')){
 					position.values.x.to = e.pageX - ($this.width() / 2);
 					position.values.y.to = e.pageY - ($this.height() / 2);
-				} else {
-					position.values.x.to = $target.offset().left - $this.width();
-					position.values.y.to = $target.offset().top - $this.width();
 				}
 			});
 
