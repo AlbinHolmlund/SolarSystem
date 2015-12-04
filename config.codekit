@@ -134,17 +134,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/js\/assets\/movey.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/js\/assets\/movey.js",
-		"outputAbbreviatedPath": "\/js\/assets\/min\/movey-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
-		},
 	"\/js\/assets\/starsky.js": {
 		"fileType": 64,
 		"ignore": 1,
