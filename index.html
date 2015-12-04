@@ -4,19 +4,28 @@
     <meta charset="UTF-8">
     <meta id="viewport" name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>A Pen by  Albin Holmlund</title>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <canvas id="starsky"></canvas>
+    <canvas id="starsky" class="canvas"></canvas>
     <div class="info-box">
       <h2>Earth</h2>
       <div class="content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dolorum, vitae, dolore nihil impedit dignissimos nisi cupiditate sequi cum neque!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dolorum, vitae, dolore nihil impedit dignissimos nisi cupiditate sequi cum neque!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dolorum, vitae, dolore nihil impedit dignissimos nisi cupiditate sequi cum neque!</p>
+        <p>Lorem ipsum</p>
       </div>
     </div>
     <h1>_SolarSystem</h1>
+    <div class="guide">
+      <ol>
+        <li>Click on any planet to get info about it!</li>
+        <li>Clicking anywhere will show info about the closest planet to your mouse cursor.</li>
+        <li>Close the planet info by clicking on the same planet again.</li>
+        <li>Use your mouse wheel to zoom in/out and explore the solar system!</li>
+        <li>You can move your mouse to shift the center of your viewport!</li>
+      </ol>
+    </div>
+    <div data-close=".guide" class="close"><i class="icon ion-ios-close-outline not-clicked"></i><i class="icon ion-ios-plus-outline clicked"></i></div>
     <div style="position: absolute; bottom: 0; left: 0;" class="button-box">
       <button class="button line-up">Line up planets</button>
       <button class="button reset-planets">Reset planets line up</button>
@@ -24,6 +33,7 @@
     <!-- jQuery--><script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <!-- Starsky canvas animation by -----><script src="js/assets/_modernizr.js"></script>
     <script src="js/assets/starsky.js"></script>
+    <script src="js/assets/moveto.js"></script>
     <script src="js/assets/movey.js"></script>
     <!-- Scripts compiled--><script src="js/min/scripts-min.js"></script>
   </body>

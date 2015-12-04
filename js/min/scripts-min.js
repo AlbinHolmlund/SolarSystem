@@ -10,7 +10,11 @@
 */
 
 // Planets array
-Planets = {};
+Planets = {
+	// Mouse positions
+	mouseX: 0,
+	mouseY: 0
+};
 
 // Default planet settings
 Planets.settings = {
@@ -44,9 +48,18 @@ Planets.settings = {
 
 
 
+/** EXTRAS **/
+
+/** Events for close button **/
+// @codekit-append "close-events.js";
+
+/** Events for guide (close guide when clicked on) **/
+// @codekit-append "guide-events.js";
+
+
+
 /** Mobile fixes, events and such to make it work (kind of) on mobile **/
 // @codekit-append "mobile-fixes.js";
-
 
 
 
@@ -258,9 +271,6 @@ var planets = {
 		label.attr('data-label', true);
 		label.html(p.name);
 
-		// Append label to planet
-		//planet.append(label);
-
 		// Click event
 		planet.click(function (){
 		
@@ -331,6 +341,20 @@ var planets = {
 
 		// Append the planet to body
 		$('body').append(planet);
+	});
+
+	// Event to close the planet via info box
+	$('body').on('click', '.close-planet', function (){
+		// Was active
+		$('.planet').removeClass('active inactive');
+
+		$('.info-box').removeClass('active');
+
+		// Reset to default sprite size
+		$('.planet').find('.sprite').css({
+			width: '100%',
+			height: '100%'
+		});
 	});
 
 })($);
@@ -428,19 +452,22 @@ var planets = {
 
 /** Get a position variable based on mouse position to add to planets x and y values **/
 (function (){
-	// Using movey to get mouse position and make the planets movement more dynamic
-	var dummyObject = new Movey($('<div/>'));
-	dummyObject.callback = function (ex, ey){
-	  // Degrees based on mouse position
-	  var xx = -(ex - $(window).width()/2) * Planets.settings.posMultip,
-	      yy = -(ey - $(window).height()/2) * Planets.settings.posMultip;
-	  
-	  if ($('.planet.active').length < 1){
-		  Planets.mouseX = xx;
-		  Planets.mouseY = yy;
-		} else {
-			Planets.mouseX = 0;
-			Planets.mouseY = 0;
+	// This should only work if not on mobile
+	if (!$('html').hasClass('mod_touchevents')){
+		// Using movey to get mouse position and make the planets movement more dynamic
+		var dummyObject = new Movey($('<div/>'));
+		dummyObject.callback = function (ex, ey){
+		  // Degrees based on mouse position
+		  var xx = -(ex - $(window).width()/2) * Planets.settings.posMultip,
+		      yy = -(ey - $(window).height()/2) * Planets.settings.posMultip;
+		  
+		  if ($('.planet.active').length < 1){
+			  Planets.mouseX = xx;
+			  Planets.mouseY = yy;
+			} else {
+				Planets.mouseX = 0;
+				Planets.mouseY = 0;
+			}
 		}
 	}
 })($);
@@ -450,9 +477,8 @@ var planets = {
 (function (){
 	// Trigger closest planet that is clicked instead of only exact clicks
 	$('body').click(function (e){
-		if (!$(e.target).hasClass('sprite') && // Did not click on planet
-			!$('.info-box').has(e.target).length && // Did not click on info box
-			!$(e.target).hasClass('button')){
+		// Only if clicking on the canvas
+		if ($(e.target).hasClass('canvas')){
 			var x = e.pageX,
 				y = e.pageY,
 				lastDist = 1000000,
@@ -495,6 +521,95 @@ var planets = {
 		});
 	});
 
+})($);
+
+(function (){
+
+	var $closeButtons = [];
+
+	$(document).ready(function (){
+		// Close button
+		$('[data-close]').each(function (){
+			var $this = $(this),
+				$target = $( $this.data('close') ),
+
+				// Add position variable that will animate
+				position = {
+					values: {
+						x: {
+							current: $target.offset().left - $this.width(), // Start pos
+							to: $target.offset().left - $this.width(), // Start pos
+							speed: 10
+						},
+						y: {
+							current: $target.offset().top - $this.width(), // Start pos
+							to: $target.offset().top - $this.width(), // Start pos
+							speed: 10
+						}
+					}
+				};
+
+			// Position callback to give element new position
+			position.callback = function (){
+				if (!$this.hasClass('hovering')){
+					position.values.x.to = $target.offset().left - $this.width();
+					position.values.y.to = $target.offset().top - $this.width();
+				}
+
+				var x = position.values.x.current,
+					y = position.values.y.current;
+
+				$this.css({
+					top: y,
+					left: x
+				});
+			}
+
+			// Add this object variable to animate
+			MoveTo.anims.push(position);
+
+			// Hovering target will move this element
+			$target.mouseenter(function (){
+				$this.addClass('hovering');
+			});
+			$this.mouseenter(function (){
+				$this.addClass('hovering');
+			});
+			$target.mouseleave(function (){
+				$this.removeClass('hovering');
+			});
+			$this.mouseleave(function (){
+				$this.removeClass('hovering');
+			});
+
+			// Moving mouse will cause this element to reposition
+			$('body').mousemove(function (e){
+				if ($this.hasClass('hovering')){
+					position.values.x.to = e.pageX - ($this.width() / 2);
+					position.values.y.to = e.pageY - ($this.height() / 2);
+				} else {
+					position.values.x.to = $target.offset().left - $this.width();
+					position.values.y.to = $target.offset().top - $this.width();
+				}
+			});
+
+			// Pusb the buttons
+			$closeButtons.push({
+				el: $(this),
+				positions: position
+			});
+		});
+	});
+
+})($);
+
+(function (){
+	$('.guide').click(function (){
+		var $closeButton = $('[data-close=".guide"]');
+
+		$(this).toggleClass('hide');
+		$closeButton.toggleClass('clicked');
+	});
 })($);
 
 

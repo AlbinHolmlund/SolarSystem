@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,700,600,300);
 
+$bp: 850px; // Breakpoint
+
 *{
   box-sizing: border-box;
 }
@@ -17,6 +19,9 @@ html, body{
 body{
   font-family: 'Source Code Pro', ;
   font-weight: 300;
+}
+p{
+  position: relative;
 }
 a{
   position: relative;
@@ -57,10 +62,13 @@ h1{
   margin: 0;
   top: 40px;
   right: 40px;
-  font-size: 2em;
+  font-size: 1em;
   font-weight: 300;
   letter-spacing: 0.3em;
   color: #fff;
+  @media (min-width: $bp){
+    font-size: 2em;
+  }
 }
 
 .planet{
@@ -109,14 +117,24 @@ $boxSpace: 20px;
   position: fixed;
   top: $boxSpace;
   left: $boxSpace;
-  right: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   color: #fff;
   padding: 40px;
-  //background: rgba(#000, 0.8);
-  z-index: 10000;
+
+  background: rgba(#000, 0.8);
+
+  z-index: 10002;
   opacity: 0;
   transform: translateY(-100%);
   transition: all 0.7s;
+  @media (min-width: 1000px){
+    right: 50%;
+    bottom: auto;
+    background: none;
+  }
   // Childs
   h2{
     position: relative;
@@ -151,6 +169,71 @@ $boxSpace: 20px;
   &.active{
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/*** Guide ***/
+.guide{
+  position: absolute;
+  color: #fff;
+  top: 100px;
+  right: 40px;
+  left: 40px;
+  z-index: 10000;
+  cursor: pointer;
+  transition: 1000ms all;
+  li{
+    margin-bottom: 20px;
+  }
+  // States
+  &.hide{
+    transform: translateX(100%);
+  }
+  // Media
+  @media (min-width: $bp){
+    left: auto;
+    width: 40%;
+  }
+}
+
+// Close button
+.close{
+  position: fixed;
+  color: #fff;
+  font-size: 2em;
+  pointer-events: none; // Let click through
+  z-index: 10001;
+  .not-clicked{
+    display: block;
+  }
+  .clicked{
+    display: none;
+  }
+  &.clicked{
+    .not-clicked{
+      display: none;
+    }
+    .clicked{
+      display: block;
+    }
+  }
+}
+
+// Close planet arrow
+.button-arrow{
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  border: none;
+  background: none;
+  outline: none;
+  color: #fff;
+  font-size: 3rem;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover{
+    transform: translateX(-10px);
   }
 }
 

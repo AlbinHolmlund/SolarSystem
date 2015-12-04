@@ -34,9 +34,6 @@
 		label.attr('data-label', true);
 		label.html(p.name);
 
-		// Append label to planet
-		//planet.append(label);
-
 		// Click event
 		planet.click(function (){
 		
@@ -107,6 +104,20 @@
 
 		// Append the planet to body
 		$('body').append(planet);
+	});
+
+	// Event to close the planet via info box
+	$('body').on('click', '.close-planet', function (){
+		// Was active
+		$('.planet').removeClass('active inactive');
+
+		$('.info-box').removeClass('active');
+
+		// Reset to default sprite size
+		$('.planet').find('.sprite').css({
+			width: '100%',
+			height: '100%'
+		});
 	});
 
 })($);

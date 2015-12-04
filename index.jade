@@ -6,20 +6,39 @@ html
 		meta(id="viewport", name="viewport", content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
 
 		title A Pen by  Albin Holmlund
+
+		//- Ionicons
+		link(rel="stylesheet", href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css")
+
+		//- Style
 		link(rel="stylesheet", href="css/style.css")
 
 	body
-		canvas#starsky
+		canvas#starsky.canvas
 
+		//- The planet info popupbox
 		.info-box
 			h2 Earth
 			.content
-				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dolorum, vitae, dolore nihil impedit dignissimos nisi cupiditate sequi cum neque!
-				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dolorum, vitae, dolore nihil impedit dignissimos nisi cupiditate sequi cum neque!
-				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dolorum, vitae, dolore nihil impedit dignissimos nisi cupiditate sequi cum neque!
+				p Lorem ipsum
 
+		//- Title
 		h1 _SolarSystem
 
+		//- Guide box
+		.guide
+			ol
+				li Click on any planet to get info about it!
+				li Clicking anywhere will show info about the closest planet to your mouse cursor.
+				li Close the planet info by clicking on the same planet again.
+				li Use your mouse wheel to zoom in/out and explore the solar system!
+				li You can move your mouse to shift the center of your viewport!
+
+		.close(data-close=".guide")
+			i.icon.ion-ios-close-outline.not-clicked
+			i.icon.ion-ios-plus-outline.clicked
+
+		//- Options
 		.button-box(style="position: absolute; bottom: 0; left: 0;")
 			button.button.line-up Line up planets
 			button.button.reset-planets Reset planets line up
@@ -30,6 +49,7 @@ html
 		// Starsky canvas animation by ---
 		<script src="js/assets/_modernizr.js"></script>
 		<script src="js/assets/starsky.js"></script>
+		<script src="js/assets/moveto.js"></script>
 		<script src="js/assets/movey.js"></script>
 
 		// Scripts compiled

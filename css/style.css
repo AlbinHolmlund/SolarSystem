@@ -17,6 +17,9 @@ body {
   font-family: "Source Code Pro";
   font-weight: 300; }
 
+p {
+  position: relative; }
+
 a {
   position: relative;
   padding-bottom: 5px; }
@@ -48,10 +51,13 @@ h1 {
   margin: 0;
   top: 40px;
   right: 40px;
-  font-size: 2em;
+  font-size: 1em;
   font-weight: 300;
   letter-spacing: 0.3em;
   color: #fff; }
+  @media (min-width: 850px) {
+    h1 {
+      font-size: 2em; } }
 
 .planet {
   position: absolute;
@@ -86,13 +92,22 @@ h1 {
   position: fixed;
   top: 20px;
   left: 20px;
-  right: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   color: #fff;
   padding: 40px;
-  z-index: 10000;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 10002;
   opacity: 0;
   transform: translateY(-100%);
   transition: all 0.7s; }
+  @media (min-width: 1000px) {
+    .info-box {
+      right: 50%;
+      bottom: auto;
+      background: none; } }
   .info-box h2 {
     position: relative;
     display: inline-block;
@@ -121,6 +136,55 @@ h1 {
   .info-box.active {
     opacity: 1;
     transform: translateY(0); }
+
+/*** Guide ***/
+.guide {
+  position: absolute;
+  color: #fff;
+  top: 100px;
+  right: 40px;
+  left: 40px;
+  z-index: 10000;
+  cursor: pointer;
+  transition: 1000ms all; }
+  .guide li {
+    margin-bottom: 20px; }
+  .guide.hide {
+    transform: translateX(100%); }
+  @media (min-width: 850px) {
+    .guide {
+      left: auto;
+      width: 40%; } }
+
+.close {
+  position: fixed;
+  color: #fff;
+  font-size: 2em;
+  pointer-events: none;
+  z-index: 10001; }
+  .close .not-clicked {
+    display: block; }
+  .close .clicked {
+    display: none; }
+  .close.clicked .not-clicked {
+    display: none; }
+  .close.clicked .clicked {
+    display: block; }
+
+.button-arrow {
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  border: none;
+  background: none;
+  outline: none;
+  color: #fff;
+  font-size: 3rem;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s; }
+  .button-arrow:hover {
+    transform: translateX(-10px); }
 
 #starsky {
   position: absolute;

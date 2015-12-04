@@ -10,7 +10,11 @@
 */
 
 // Planets array
-Planets = {};
+Planets = {
+	// Mouse positions
+	mouseX: 0,
+	mouseY: 0
+};
 
 // Default planet settings
 Planets.settings = {
@@ -44,6 +48,15 @@ Planets.settings = {
 
 
 
+/** EXTRAS **/
+
+/** Events for close button **/
+// @codekit-append "close-events.js";
+
+/** Events for guide (close guide when clicked on) **/
+// @codekit-append "guide-events.js";
+
+
+
 /** Mobile fixes, events and such to make it work (kind of) on mobile **/
 // @codekit-append "mobile-fixes.js";
-
