@@ -363,7 +363,7 @@ var planets = {
 /** Move planets each frame (60fps) **/
 (function (){
 	// Move planets each frame
-	setInterval(function (){
+	function movePlanets() {
 		// Loop through and position all planets
 		$.each(planets, function (key, planet){
 			if (!planet.el.hasClass('active')){
@@ -400,7 +400,11 @@ var planets = {
 				left: planet.x - (planet.el.width()/2)
 			});
 		});
-	}, 1000/60);
+
+		// Re run
+		requestAnimFrame(movePlanets);
+	}
+	movePlanets();
 })($);
 
 

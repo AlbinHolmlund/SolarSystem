@@ -1,13 +1,13 @@
-
-
 MoveTo = {
   defaults: {
     speed: 20 // More is slower
   },
   anims: [] // The variable objects to animate value of
 };
-
-setInterval(function (){
+MoveTo.add = function (obj){
+  MoveTo.anims.push(obj);
+}
+MoveTo.render = function (){
   // Each object to animate
   for (var key in MoveTo.anims) {
     if (MoveTo.anims.hasOwnProperty(key)) {
@@ -34,4 +34,8 @@ setInterval(function (){
       anim.callback();
     }
   }
-}, 1000/60);
+  
+  // Rerender
+  requestAnimFrame(MoveTo.render);
+};
+MoveTo.render();
