@@ -124,6 +124,9 @@ $boxSpace: 20px;
   color: #fff;
   padding: 40px;
 
+  overflow: hidden;
+  overflow-y: auto;
+
   background: rgba(#000, 0.8);
 
   z-index: 10002;
@@ -132,7 +135,6 @@ $boxSpace: 20px;
   transition: all 0.7s;
   @media (min-width: 1000px){
     right: 50%;
-    bottom: auto;
     background: none;
   }
   // Childs

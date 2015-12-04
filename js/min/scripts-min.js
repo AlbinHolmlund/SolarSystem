@@ -445,10 +445,13 @@ var planets = {
 	}
 
 	$(window).bind('mousewheel', function(event) {
-		if (event.originalEvent.wheelDelta >= 0) { 
-			zoomIn();
-		} else {
-			zoomOut();
+		// Only scroll to zoom if not hovering the info text
+		if (!$('.info-box').is(':hover')){
+			if (event.originalEvent.wheelDelta >= 0) { 
+				zoomIn();
+			} else {
+				zoomOut();
+			}
 		}
 	});
 })($);
