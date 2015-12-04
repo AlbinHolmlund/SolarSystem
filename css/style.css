@@ -20,6 +20,9 @@ body {
 p {
   position: relative; }
 
+strong {
+  font-weight: 500; }
+
 hr {
   border-color: #e74c3c; }
 

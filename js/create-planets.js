@@ -95,6 +95,11 @@
 
 				});
 
+				// Close guide
+				var $closeButton = $('[data-close=".guide"]');
+				$('.guide').addClass('hide');
+				$closeButton.addClass('clicked');
+
 			}
 
 		});
