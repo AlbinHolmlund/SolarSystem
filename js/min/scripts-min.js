@@ -449,13 +449,24 @@ var planets = {
 		});
 	}
 
-	$(window).bind('mousewheel', function(event) {
+	$(window).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
 		// Only scroll to zoom if not hovering the info text
 		if (!$('.info-box').is(':hover')){
-			if (event.originalEvent.wheelDelta >= 0) { 
-				zoomIn();
-			} else {
-				zoomOut();
+			var wheelDelta = event.originalEvent.wheelDelta,
+				eventDetail = event.originalEvent.detail;
+
+			if (wheelDelta){
+				if (wheelDelta >= 0) { 
+					zoomIn();
+				} else {
+					zoomOut();
+				}
+			} else if(eventDetail) {
+				if (eventDetail >= 0) { 
+					zoomOut();
+				} else {
+					zoomIn();
+				}
 			}
 		}
 	});
