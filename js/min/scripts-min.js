@@ -7,6 +7,7 @@
 /*
 	Sources:
 	Planet vectors: http://www.mygraphichunt.com/free-vector-flat-planet-vectors-10713/
+	Starsky: http://codepen.io/frexuz/pen/BvHsk
 */
 
 // Planets array
