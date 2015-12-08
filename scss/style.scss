@@ -82,7 +82,6 @@ h1{
   position: absolute;
   border-radius: 50%;
   text-align: center;
-  padding-top: 20;
   z-index: 10;
   cursor: pointer;
 
@@ -171,7 +170,7 @@ $boxSpace: 20px;
     }
   }
   p{
-    margin-bottom: 0 0 20px 0;
+    margin-bottom: 20px;
     padding: 0 40px;
   }
   // States
